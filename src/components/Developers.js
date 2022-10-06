@@ -44,24 +44,30 @@ const Developers = () => {
 
   return (
     <div className="flex flex-col justify-center">
-      <div className="flex items-center justify-between gap-10rem p-0.5rem border-rounded mb-2rem bg-green-100 w-60rem">
-        <h3>DevHub</h3>
+      <div className="flex items-center justify-between gap-10rem p-0.5rem pl-1rem pr-1rem border-rounded mb-2rem bg-green-100 w-60rem">
+        <h2 className="text-green-600">
+          <span className="text-green-500">Dev</span>Hub
+        </h2>
         <div className="flex gap-2rem">
           <button
-            className={`${className} border-none bg-green-500 text-sm  p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer`}
+            className={`${className} border-rounded border-none bg-green-500 text-sm  p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer`}
             onClick={toggleForm}
           >
             {openForm ? "Close Form" : "Add Developer"}
           </button>
           <button
-            className="border-none bg-green-500 text-sm  p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer"
+            className="border-rounded border-none bg-green-500 text-sm  p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer"
             onClick={logIn}
           >
             {btn}
           </button>
         </div>
       </div>
-      {openForm ? <AddForm dev={dev} setDev={setDev} /> : ""}
+      {openForm ? (
+        <AddForm dev={dev} setDev={setDev} setOpenForm={setOpenForm} />
+      ) : (
+        ""
+      )}
 
       <div>
         {btn === "Hide Devs" ? (
@@ -73,7 +79,10 @@ const Developers = () => {
                 data-aos="fade-left"
                 data-aos-delay={60 * index}
               >
-                <h2 className="text-gray-600">{person.name}</h2>
+                <span className="p-sm bg-gray-100 b-rd-30% text-gray-400 font-bold">
+                  {index + 1}
+                </span>
+                <h2 className="mt-2rem text-gray-600">{person.name}</h2>
                 <span className="text-0.8rem text-Gray-600 font-semibold">
                   Skill: <span className="text-green-500">{person.skill}</span>
                 </span>

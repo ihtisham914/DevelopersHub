@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-const AddForm = ({ dev, setDev }) => {
+const AddForm = ({ dev, setDev, setOpenForm }) => {
   const [inputText, setInputText] = useState("");
   const [skill, setSkill] = useState("");
   const [desc, setDesc] = useState("");
@@ -23,6 +23,7 @@ const AddForm = ({ dev, setDev }) => {
       setSkill("");
       setDesc("");
       setShow(false);
+      setOpenForm(false);
     }
   };
   useEffect(() => {
