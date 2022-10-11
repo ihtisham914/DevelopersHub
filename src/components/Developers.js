@@ -23,26 +23,26 @@ const Developers = () => {
 
   return (
     <div className="flex flex-col justify-center ">
-      <div className="flex items-center justify-between gap-10rem p-0.5rem pl-1rem pr-1rem border-rounded mb-2rem bg-green-100 ">
+      <div className="flex items-center justify-between gap-2rem p-0.5rem pl-1rem pr-1rem border-rounded mb-2rem bg-green-100 ">
         <h2 className="text-green-600">
           <span className="text-green-500">Dev</span>Hub
         </h2>
-        <div className="flex gap-2rem">
+        <div className="flex gap-0.5rem md:gap-2rem lg:gap-2rem">
           <button
-            className={`${className} border-rounded bg-green-500 text-sm border-green w-8rem p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer`}
+            className={`${className} border-rounded bg-green-500 text-sm border-green  p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer`}
             onClick={() => {
               openForm ? setOpenForm(false) : setOpenForm(true);
             }}
           >
-            {openForm ? "Close Form" : "Add Developer"}
+            {openForm ? "Close" : "Add Dev"}
           </button>
           <button
-            className="border-rounded bg-white  text-sm  p-0.5rem border-green w-9rem hover:bg-green-400 hover:text-white transition  cursor-pointer"
+            className="border-rounded bg-white  text-sm  p-0.5rem border-green  hover:bg-green-400 hover:text-white transition  cursor-pointer"
             onClick={() => {
               showdevs ? setShowDevs(false) : setShowDevs(true);
             }}
           >
-            {showdevs ? "Hide Developers" : "Show Developers"}
+            {showdevs ? "Hide Devs" : "Show Devs"}
           </button>
         </div>
       </div>
