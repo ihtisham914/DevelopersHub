@@ -12,35 +12,14 @@ const getLocalData = () => {
     return [];
   }
 };
-window.localStorage.removeItem("khan");
 
 // window.localStorage.clear();
 const Developers = () => {
-  const [btn, setBtn] = useState("Hide Devs");
+  const [showdevs, setShowDevs] = useState(true);
   const [dev, setDev] = useState(getLocalData());
   const [openForm, setOpenForm] = useState(false);
 
-  // get array length
-  // const length = dev.length;
-
-  // change text
-  const logIn = () => {
-    if (btn === "Show Devs") {
-      setBtn("Hide Devs");
-    } else {
-      setBtn("Show Devs");
-    }
-  };
-
   const className = !openForm ? "" : "redcolor";
-
-  const toggleForm = () => {
-    if (openForm) {
-      setOpenForm(false);
-    } else {
-      setOpenForm(true);
-    }
-  };
 
   return (
     <div className="flex flex-col justify-center">
@@ -50,16 +29,20 @@ const Developers = () => {
         </h2>
         <div className="flex gap-2rem">
           <button
-            className={`${className} border-rounded border-none bg-green-500 text-sm  p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer`}
-            onClick={toggleForm}
+            className={`${className} border-rounded bg-green-500 text-sm border-green w-8rem p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer`}
+            onClick={() => {
+              openForm ? setOpenForm(false) : setOpenForm(true);
+            }}
           >
             {openForm ? "Close Form" : "Add Developer"}
           </button>
           <button
-            className="border-rounded border-none bg-green-500 text-sm  p-0.5rem text-white hover:bg-green-400 transition  cursor-pointer"
-            onClick={logIn}
+            className="border-rounded bg-white  text-sm  p-0.5rem border-green w-9rem hover:bg-green-400 hover:text-white transition  cursor-pointer"
+            onClick={() => {
+              showdevs ? setShowDevs(false) : setShowDevs(true);
+            }}
           >
-            {btn}
+            {showdevs ? "Hide Developers" : "Show Developers"}
           </button>
         </div>
       </div>
@@ -70,7 +53,7 @@ const Developers = () => {
       )}
 
       <div>
-        {btn === "Hide Devs" ? (
+        {showdevs ? (
           <div className="grid grid-cols-3 gap-2rem pb-2rem">
             {dev.map((person, index) => (
               <div
