@@ -22,8 +22,8 @@ const Developers = () => {
   const className = !openForm ? "" : "redcolor";
 
   return (
-    <div className="flex flex-col justify-center">
-      <div className="flex items-center justify-between gap-10rem p-0.5rem pl-1rem pr-1rem border-rounded mb-2rem bg-green-100 w-60rem">
+    <div className="flex flex-col justify-center ">
+      <div className="flex items-center justify-between gap-10rem p-0.5rem pl-1rem pr-1rem border-rounded mb-2rem bg-green-100 ">
         <h2 className="text-green-600">
           <span className="text-green-500">Dev</span>Hub
         </h2>
@@ -54,10 +54,10 @@ const Developers = () => {
 
       <div>
         {showdevs ? (
-          <div className="grid grid-cols-3 gap-2rem pb-2rem">
+          <div className="grid grid-cols-1 gap-2rem pb-2rem md:grid-cols-2 lg:grid-cols-3">
             {dev.map((person, index) => (
               <div
-                className="p-2rem shadow-xl w-15rem"
+                className="p-2rem shadow-xl "
                 key={person.id}
                 data-aos="fade-left"
                 data-aos-delay={60 * index}
