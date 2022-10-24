@@ -1,10 +1,15 @@
-import { React, useState } from "react";
+import { React, useState, useRef, useEffect } from "react";
 
 const AddForm = ({ dev, setDev, setOpenForm }) => {
   const [inputText, setInputText] = useState("");
   const [skill, setSkill] = useState("");
   const [desc, setDesc] = useState("");
   const [show, setShow] = useState(true);
+
+  const inputRef = useRef(null);
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -42,6 +47,7 @@ const AddForm = ({ dev, setDev, setOpenForm }) => {
         >
           <div className="flex items-center justify-center  gap-2rem">
             <input
+              ref={inputRef}
               className="p-0.5rem  outline-indigo-2px focus:outline-green border-red w-100% text-xl"
               type="text"
               placeholder="Enter name"
