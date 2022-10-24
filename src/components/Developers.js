@@ -1,23 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddForm from "./AddForm";
 import "../index.css";
+import HeroSection from "./HeroSection";
 
 // get data from local storage
-const getLocalData = () => {
-  const dev = localStorage.getItem("devs");
+// const getLocalData = () => {
+//   const dev = localStorage.getItem("devs");
 
-  if (dev) {
-    return JSON.parse(dev);
-  } else {
-    return [];
-  }
-};
+//   if (dev) {
+//     return JSON.parse(dev);
+//   } else {
+//     return [];
+//   }
+// };
 
 // window.localStorage.clear();
-const Developers = () => {
+const Developers = ({ devs }) => {
   const [showdevs, setShowDevs] = useState(true);
-  const [dev, setDev] = useState(getLocalData());
+  const [dev, setDev] = useState(devs);
   const [openForm, setOpenForm] = useState(false);
+
+  useEffect(() => {
+    document.title = `DevHub (${dev.length})`;
+  }, [dev]);
 
   const className = !openForm ? "" : "redcolor";
 
@@ -52,12 +57,18 @@ const Developers = () => {
         ""
       )}
 
+      <HeroSection
+        openForm={openForm}
+        setOpenForm={setOpenForm}
+        className={className}
+      />
+
       <div>
         {showdevs ? (
           <div className="grid grid-cols-1 gap-2rem pb-2rem md:grid-cols-2 lg:grid-cols-3">
             {dev.map((person, index) => (
               <div
-                className="p-2rem shadow-xl "
+                className="p-2rem shadow-xl hover:shadow-2xl cursor-pointer"
                 key={person.id}
                 data-aos="fade-left"
                 data-aos-delay={60 * index}
@@ -65,11 +76,13 @@ const Developers = () => {
                 <span className="p-sm bg-gray-100 b-rd-30% text-gray-400 font-bold">
                   {index + 1}
                 </span>
-                <h2 className="mt-2rem text-gray-600">{person.name}</h2>
-                <span className="text-0.8rem text-Gray-600 font-semibold">
+                <h2 className="text-2xl mt-2rem text-gray-600">
+                  {person.name}
+                </h2>
+                <span className="text-xl text-Gray-600 font-semibold ">
                   Skill: <span className="text-green-500">{person.skill}</span>
                 </span>
-                <p>{person.desc}</p>
+                <p className="text-xl">{person.desc}</p>
               </div>
             ))}
           </div>

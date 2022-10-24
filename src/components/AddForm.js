@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 
 const AddForm = ({ dev, setDev, setOpenForm }) => {
   const [inputText, setInputText] = useState("");
@@ -26,10 +26,12 @@ const AddForm = ({ dev, setDev, setOpenForm }) => {
       setOpenForm(false);
     }
   };
-  useEffect(() => {
-    localStorage.setItem("devs", JSON.stringify(dev));
-  }, [dev]);
-  console.log(dev);
+
+  // saving data in local storage
+  // useEffect(() => {
+  //   localStorage.setItem("devs", JSON.stringify(dev));
+  // }, [dev]);
+
   return (
     <div>
       {show ? (
@@ -40,7 +42,7 @@ const AddForm = ({ dev, setDev, setOpenForm }) => {
         >
           <div className="flex items-center justify-center  gap-2rem">
             <input
-              className="p-0.5rem  outline-indigo-2px focus:outline-green border-red w-100%"
+              className="p-0.5rem  outline-indigo-2px focus:outline-green border-red w-100% text-xl"
               type="text"
               placeholder="Enter name"
               value={inputText}
@@ -49,7 +51,7 @@ const AddForm = ({ dev, setDev, setOpenForm }) => {
           </div>
           <div className="flex items-center justify-center gap-2rem">
             <input
-              className="p-0.5rem  outline-indigo-2px focus:outline-green border-red w-100%"
+              className="p-0.5rem  outline-indigo-2px focus:outline-green border-red w-100% text-xl"
               type="text"
               value={skill}
               onChange={(event) => setSkill(event.target.value)}
@@ -58,7 +60,7 @@ const AddForm = ({ dev, setDev, setOpenForm }) => {
           </div>
           <div className="flex items-center justify-center gap-2rem">
             <input
-              className="p-0.5rem  outline-indigo-2px focus:outline-green border-red w-100%"
+              className="p-0.5rem  outline-indigo-2px focus:outline-green border-red w-100% text-xl"
               type="text"
               value={desc}
               onChange={(event) => setDesc(event.target.value)}
